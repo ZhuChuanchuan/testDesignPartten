@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置名为person的Bean -->
+    <bean id="person" class="com.zhcc.bean.Person">
+        <property name="axe" ref="axe"/>  <!--将axe Bean传入，反射setAxe()方法-->
+    </bean>
+    <bean id="axe" class="com.zhcc.bean.Axe"/>
+
+    <bean class="com.zhcc.bean.EmailNotifier"/>
+
+    <bean id="p1" class="com.zhcc.bean.Person"/>
+    <bean id="p2" class="com.zhcc.bean.Person" scope="prototype"/>
+
+    <!--JDK自带或第三发框架或自己实现都需要配置管理-->
+    <bean id="win" class="javax.swing.JFrame"/>
+    <bean id="date" class="java.util.Date"/>
+</beans>
