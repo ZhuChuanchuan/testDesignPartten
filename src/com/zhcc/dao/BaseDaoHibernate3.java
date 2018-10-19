@@ -60,6 +60,13 @@ public class BaseDaoHibernate3<T> extends HibernateDaoSupport implements BaseDao
                 return result;
             }
         });
+
+        //Lambda表达式实现
+        List<T> list2=getHibernateTemplate().execute(session -> {
+            List result=session.createQuery(hql).setFirstResult((pageNo-1)*pageSize).setMaxResults(pageSize).list();
+            return result;
+        });
+
         return list;
     }
 
@@ -75,6 +82,7 @@ public class BaseDaoHibernate3<T> extends HibernateDaoSupport implements BaseDao
                 return result;
             }
         });
+
         return list;
     }
 }
